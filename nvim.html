@@ -28,6 +28,7 @@
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         border-radius: 4px;
+        white-space: nowrap;
       }
 
       h1,
@@ -327,36 +328,93 @@
         </div>
         <div class="grid-item">
           <h3>SCREEN MOVEMENT</h3>
-          <ul>
-            <li>zz cursor line to center of screen</li>
-            <li>zt cursor line to top of screen</li>
-            <li>zb cursor line to bottom of screen</li>
-            <li>CTRL-e move screen forward one line</li>
-            <li>CTRL-y move screen backward one line</li>
-            <li>CTRL-u move backward half a screen</li>
-            <li>CTRL-d move forward half a screen</li>
-            <li>CTRL-b move backward a full screen</li>
-            <li>CTRL-f move forward a full screen</li>
-            <li>Note: In command mode, ^ means Ctrl</li>
-          </ul>
+          <table class="box">
+            <tr>
+              <td><code>zz</code></td>
+              <td>cursor line to center of screen</td>
+            </tr>
+            <tr>
+              <td><code>zt</code></td>
+              <td>cursor line to top of screen</td>
+            </tr>
+            <tr>
+              <td><code>zb</code></td>
+              <td>cursor line to bottom of screen</td>
+            </tr>
+            <tr>
+              <td><code>^e</code></td>
+              <td>move screen forward one line</td>
+            </tr>
+            <tr>
+              <td><code>^y</code></td>
+              <td>move screen backward one line</td>
+            </tr>
+            <tr>
+              <td><code>^u</code></td>
+              <td>move backward half a screen</td>
+            </tr>
+            <tr>
+              <td><code>^d</code></td>
+              <td>move forward half a screen</td>
+            </tr>
+            <tr>
+              <td><code>^b</code></td>
+              <td>move backward a full screen</td>
+            </tr>
+            <tr>
+              <td><code>^f</code></td>
+              <td>move forward a full screen</td>
+            </tr>
+            <tr>
+              <td>Note:</td>
+              <td>^ means <kbd>Ctrl</kbd> in command mode</td>
+            </tr>
+          </table>
         </div>
         <div class="grid-item">
           <h3>VISUAL MODE</h3>
-          <ul>
-            <li>
-              v start visual mode, mark lines, then perform a command (like
-              yank)
-            </li>
-            <li>V start linewise visual mode</li>
-            <li>CTRL-v start visual-block mode</li>
-            <li>o move to other end of marked area</li>
-            <li>CTRL-v start visual-block mode</li>
-            <li>O move to other corner of a block</li>
-            <li>aw highlight/select a word</li>
-            <li>ab/aw a block with {}/()</li>
-            <li>ib/iw inner block with {}/()</li>
-            <li>Esc exit visual mode</li>
-          </ul>
+          <table class="box">
+            <tr>
+              <td><code>v</code></td>
+              <td>start visual mode, mark lines, then perform a command (like yank)</td>
+            </tr>
+            <tr>
+              <td><code>V</code></td>
+              <td>start linewise visual mode</td>
+            </tr>
+            <tr>
+              <td><code>^v</code></td>
+              <td>start visual-block mode</td>
+            </tr>
+            <tr>
+              <td><code>o</code></td>
+              <td>move to other end of marked area</td>
+            </tr>
+            <tr>
+              <td><code>^v</code></td>
+              <td>start visual-block mode</td>
+            </tr>
+            <tr>
+              <td><code>O</code></td>
+              <td>move to other corner of a block</td>
+            </tr>
+            <tr>
+              <td><code>aw</code></td>
+              <td>highlight/select a word</td>
+            </tr>
+            <tr>
+              <td><code>ab/B</code></td>
+              <td>a block with {}/()</td>
+            </tr>
+            <tr>
+              <td><code>ib/B</code></td>
+              <td>inner block with {}/()</td>
+            </tr>
+            <tr>
+              <td><code>Esc</code></td>
+              <td>exit visual mode</td>
+            </tr>
+          </table>
         </div>
         <div class="grid-item">
           <h3>MARK POSITION</h3>
