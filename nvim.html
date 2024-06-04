@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neovim cheatsheet</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto Mono", "Consolas", monospace;
+        font-size: 14px;
+        color: #222;
+      }
+
+      body,
+      html {
+        height: 100%;
+        width: 100%;
+      }
+
+      code {
+        border: 1px solid #8c8bd6;
+        color: #55549c;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        border-radius: 4px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-bottom: 0.75rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.375rem;
+      }
+
+      h4 {
+        font-size: 1.125rem;
+      }
+
+      h5 {
+        font-size: 1rem;
+      }
+
+      h6 {
+        font-size: 0.875rem;
+      }
+
+      table,
+      td {
+        border: 0px solid #999;
+      }
+
+      td.arrow {
+        font-size: 3rem;
+      }
+
+      table.box {
+        border: 0;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      table.box td {
+        padding-bottom: 0.5rem;
+      }
+
+      table.box tr td:nth-child(1) {
+        font-weight: bold;
+        padding-right: 1rem;
+        vertical-align: top;
+      }
+
+      table.box tr td:nth-child(2) {
+        vertical-align: top;
+      }
+
+      table.vert {
+        width: 160px;
+        display: table;
+        border: 0px solid #000;
+        margin: 0 auto;
+      }
+
+      table.vert td {
+        padding-bottom: 1.5rem;
+      }
+
+      table.vert tr td:nth-child(1) {
+        font-weight: bold;
+        padding-right: 1rem;
+        vertical-align: middle;
+      }
+
+      table.vert tr td:nth-child(2) {
+        vertical-align: top;
+      }
+
+      table.vert tr td code {
+        font-size: 2rem;
+        border: 2px solid #548586;
+        color: #3f7779;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        width: 100%;
+        height: 100%;
+      }
+
+      .grid-row {
+        display: grid;
+        width: 100%;
+      }
+
+      .grid-row-0 {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .grid-row-1 {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .grid-row-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-row-3 {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .grid-item {
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-row grid-row-1">
+        <div class="grid-item">hello</div>
+      </div>
+      <div class="grid-row grid-row-1">
+        <div class="grid-item">
+          <h3>EDITING</h3>
+          <table class="box">
+            <tr>
+              <td><code>r</code></td>
+              <td>replace single character</td>
+            </tr>
+            <tr>
+              <td><code>R</code></td>
+              <td>enter replace mode</td>
+            </tr>
+            <tr>
+              <td><code>J</code></td>
+              <td>
+                join line below to current one with one space in between them
+              </td>
+            </tr>
+            <tr>
+              <td><code>gJ</code></td>
+              <td>join line below to current one with no spaces</td>
+            </tr>
+            <tr>
+              <td><code>cc</code></td>
+              <td>change entire line</td>
+            </tr>
+            <tr>
+              <td><code>C</code></td>
+              <td>change to the end of line</td>
+            </tr>
+            <tr>
+              <td><code>cm</code></td>
+              <td>change with {motion} (with: c0wd0bFTia)</td>
+            </tr>
+            <tr>
+              <td><code>ca</code></td>
+              <td>change around</td>
+            </tr>
+            <tr>
+              <td><code>cw</code></td>
+              <td>delete character and substitute text</td>
+            </tr>
+            <tr>
+              <td><code>S</code></td>
+              <td>delete line and substitute text</td>
+            </tr>
+            <tr>
+              <td><code>xp</code></td>
+              <td>transpose two letters (xa -&gt; ax)</td>
+            </tr>
+            <tr>
+              <td><code>u</code></td>
+              <td>undo</td>
+            </tr>
+            <tr>
+              <td><code>U</code></td>
+              <td>redo</td>
+            </tr>
+            <tr>
+              <td><code>.</code></td>
+              <td>repeat last command</td>
+            </tr>
+          </table>
+        </div>
+        <div class="grid-item">
+          <h3>CUT & PASTE</h3>
+          <table class="box">
+            <tr>
+              <td><code>yy</code></td>
+              <td>yank (copy) single line</td>
+            </tr>
+            <tr>
+              <td><code>y</code></td>
+              <td>yank from cursor to start of next word</td>
+            </tr>
+            <tr>
+              <td><code>Y</code></td>
+              <td>yank a {motion} with a movement (h,j,k,l)</td>
+            </tr>
+            <tr>
+              <td><code>"*</code></td>
+              <td>yank {motion} into named buffer a</td>
+            </tr>
+            <tr>
+              <td><code>p</code></td>
+              <td>put (paste) after the cursor</td>
+            </tr>
+            <tr>
+              <td><code>P</code></td>
+              <td>put (paste) before the cursor</td>
+            </tr>
+            <tr>
+              <td><code>gp</code></td>
+              <td>put text from buffer a before cursor</td>
+            </tr>
+            <tr>
+              <td><code>dd</code></td>
+              <td>delete current line</td>
+            </tr>
+            <tr>
+              <td><code>d</code></td>
+              <td>delete {motion}</td>
+            </tr>
+            <tr>
+              <td><code>dd</code></td>
+              <td>delete {motion} downward from cursor</td>
+            </tr>
+            <tr>
+              <td><code>d#</code></td>
+              <td>delete # of lines with movement</td>
+            </tr>
+            <tr>
+              <td><code>dd</code></td>
+              <td>delete line to end of line</td>
+            </tr>
+            <tr>
+              <td><code>di</code></td>
+              <td>delete until word</td>
+            </tr>
+            <tr>
+              <td><code>x</code></td>
+              <td>delete character at cursor</td>
+            </tr>
+            <tr>
+              <td><code>X</code></td>
+              <td>delete backwards from cursor</td>
+            </tr>
+          </table>
+        </div>
+        <div class="grid-item">
+          <table class="vert center">
+            <tr>
+              <td colspan="2" class="arrow">🡅</td>
+            </tr>
+            <tr>
+              <td><code>gg</code></td>
+              <td>first line</td>
+            </tr>
+            <tr>
+              <td><code>H</code></td>
+              <td>cursor top of screen</td>
+            </tr>
+            <tr>
+              <td><code>{</code></td>
+              <td>beginning of paragraph</td>
+            </tr>
+            <tr>
+              <td><code>(</code></td>
+              <td>beginning of sentence</td>
+            </tr>
+            <tr>
+              <td><code>#</code></td>
+              <td>find word under cursor</td>
+            </tr>
+            <tr>
+              <td><code>N</code></td>
+              <td>(find) opposite direction</td>
+            </tr>
+            <tr>
+              <td><code>M</code></td>
+              <td>cursor to middle of screen</td>
+            </tr>
+          </table>
+        </div>
+        <div class="grid-item">
+          <h3>SCREEN MOVEMENT</h3>
+          <ul>
+            <li>zz cursor line to center of screen</li>
+            <li>zt cursor line to top of screen</li>
+            <li>zb cursor line to bottom of screen</li>
+            <li>CTRL-e move screen forward one line</li>
+            <li>CTRL-y move screen backward one line</li>
+            <li>CTRL-u move backward half a screen</li>
+            <li>CTRL-d move forward half a screen</li>
+            <li>CTRL-b move backward a full screen</li>
+            <li>CTRL-f move forward a full screen</li>
+            <li>Note: In command mode, ^ means Ctrl</li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <h3>VISUAL MODE</h3>
+          <ul>
+            <li>
+              v start visual mode, mark lines, then perform a command (like
+              yank)
+            </li>
+            <li>V start linewise visual mode</li>
+            <li>CTRL-v start visual-block mode</li>
+            <li>o move to other end of marked area</li>
+            <li>CTRL-v start visual-block mode</li>
+            <li>O move to other corner of a block</li>
+            <li>aw highlight/select a word</li>
+            <li>ab/aw a block with {}/()</li>
+            <li>ib/iw inner block with {}/()</li>
+            <li>Esc exit visual mode</li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <h3>MARK POSITION</h3>
+          <ul>
+            <li>mc mark current position as c</li>
+            <li>'c move cursor to c</li>
+            <li>c' move to the beginning of the line containing mark c</li>
+            <li>:marks list of marks</li>
+          </ul>
+          <h3>REGISTERS</h3>
+          <ul>
+            <li>:reg show registers content</li>
+            <li>"xy yank into register x</li>
+            <li>"xp paste contents of register x</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-row grid-row-2">
+        <div class="grid-item">
+          <table>
+            <tr>
+              <td rowspan="2"  class="arrow">🡄</td>
+              <td>0</td>
+              <td>^/_</td>
+              <td>&lt;</td>
+              <td>,</td>
+              <td>F</td>
+              <td>T</td>
+              <td>ge/gE</td>
+              <td>b/B</td>
+            </tr>
+            <tr>
+              <td>hard beginning of line</td>
+              <td>soft beginning of line</td>
+              <td>indent line</td>
+              <td>repeat t, T, f, F</td>
+              <td>inclusive (find)</td>
+              <td>(find) till</td>
+              <td>word end / unlimited word end</td>
+              <td>word / unlimited word</td>
+            </tr>
+          </table>
+        </div>
+        <div class="grid-item">
+          <table>
+            <tr>
+              <td>w/W</td>
+              <td>e/E</td>
+              <td>t</td>
+              <td>f</td>
+              <td>;</td>
+              <td>&gt;</td>
+              <td>%</td>
+              <td>$</td>
+              <td rowspan="2"  class="arrow">🡆</td>
+            </tr>
+            <tr>
+              <td>hard beginning of line</td>
+              <td>soft beginning of line</td>
+              <td>indent line</td>
+              <td>repeat t, T, f, F</td>
+              <td>inclusive (find)</td>
+              <td>(find) till</td>
+              <td>word end / unlimited word end</td>
+              <td>word / unlimited word</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="grid-row grid-row-3">
+        <div class="grid-item">
+          <h3>HOW TO THINK IN VIM</h3>
+          <ul>
+            <li>
+              To be efficient in VIM, learning commands is not enough. To
+              accomplish editing tasks elegantly, you must learn to think in
+              "VIM VERB NOUN MODIFIER" statements. Because VIM is a symbol
+              language with a formal grammatical structure, these VIM idioms
+              describe what you want to do in a somewhat natural way and are the
+              heart of VIM wizardry.
+            </li>
+            <li>
+              VERBS are the thing you want to do - (change), (delete), (yank),
+              (visual), etc.
+            </li>
+            <li>
+              MODIFIERS change how nouns are understood - (inside), (around),
+              (until), (to), (find), etc.
+            </li>
+            <li>
+              NOUNS are what you are editing - (word), (sentence), (paragraph),
+              (block), etc.
+            </li>
+            <li>Some examples:</li>
+            <li>diw delete inside word to delete word under cursor</li>
+            <li>ciw change inside word, respecting citation</li>
+            <li>
+              ci" change inside quotation marks to change string inside next
+              marks
+            </li>
+            <li>c* change everything from the cursor till the letter x</li>
+            <li>v} visually select (around) this paragraph</li>
+            <li>yi( copy the phrase inside the parentheses</li>
+            <li>dfoo delete from here until the second occurrence of 'foo'</li>
+            <li>
+              fypx then change the occurrence of 'y', move forward 2 words, and
+              change word 'x'
+            </li>
+            <li>
+              h,j,k,l for fine tuning. If you are using them more than a few
+              times, there's probably a more efficient way to move or accomplish
+              what you're doing. Stop and think in sentences!
+            </li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <h3>INSERT MODE</h3>
+          <ul>
+            <li>i insert before the cursor</li>
+            <li>I insert at the beginning of the line</li>
+            <li>a append after the cursor</li>
+            <li>A append at the end of the line</li>
+            <li>o open new line below the current one</li>
+            <li>O open new line above the current one</li>
+            <li>gi insert at the same place</li>
+            <li>gi insert text &lt;#&gt; times</li>
+            <li>Esc exit insert mode</li>
+          </ul>
+          <h3>MACROS</h3>
+          <ul>
+            <li>qa record macro to register 'a'</li>
+            <li>q stop recording macro</li>
+            <li>@a run macro at register 'a'</li>
+            <li>@@ rerun last macro</li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <table>
+            <tr>
+              <td>gg</td>
+              <td>first line</td>
+            </tr>
+            <tr>
+              <td>H</td>
+              <td>cursor top of screen</td>
+            </tr>
+            <tr>
+              <td>{</td>
+              <td>beginning of paragraph</td>
+            </tr>
+            <tr>
+              <td>(</td>
+              <td>beginning of sentence</td>
+            </tr>
+            <tr>
+              <td>#</td>
+              <td>find word under cursor</td>
+            </tr>
+            <tr>
+              <td>N</td>
+              <td>(find) opposite direction</td>
+            </tr>
+            <tr>
+              <td>M</td>
+              <td>cursor to middle of screen</td>
+            </tr>
+            <tr>
+              <td colspan="2"  class="arrow">🡇</td>
+            </tr>
+          </table>
+        </div>
+        <div class="grid-item">
+          <h3>SEARCH</h3>
+          <ul>
+            <li>/pattern search for pattern</li>
+            <li>?pattern search for pattern backwards</li>
+            <li>Search Pattern: Finds...</li>
+            <li>a the character a</li>
+            <li>^a line beginning with char a</li>
+            <li>[abc] string containing any of a,b or c</li>
+            <li>a.*a string beginning with a char a</li>
+            <li>\a, AA, AAA disable char special meaning</li>
+            <li>n next</li>
+            <li>N previous</li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <h3>REPLACE</h3>
+          <ul>
+            <li>:s/old/new/ replace next old with new</li>
+            <li>
+              :s/old/new/g replace instances of old with new in current line
+            </li>
+            <li>:%s/old/new/g replace all old with new throughout file</li>
+            <li>
+              :%s/old/new/gc replace all old with new in file with confirmations
+            </li>
+            <li>
+              :%s/old/new/g& replace instances of old with new between lines 1
+              to 5, inclusive
+            </li>
+            <li>
+              :g/string/d delete lines containing/ not containing instances of
+              string x
+            </li>
+          </ul>
+          <h3>CASE</h3>
+          <ul>
+            <li>~ switch char case, move forward</li>
+            <li>U,u uppercase/lowercase line</li>
+            <li>gU,g~ uppercase/lowercase word</li>
+            <li>VgU,Vg~ invert case for word/line</li>
+          </ul>
+        </div>
+        <div class="grid-item">
+          <h3>MISCELLANEOUS COMMANDS</h3>
+          <ul>
+            <li>w or ZZ write (save) and quit file</li>
+            <li>w! write file overriding protection</li>
+            <li>q! quit file (discarding any changes)</li>
+            <li>! command use UNIX command</li>
+            <li>r file read file contents into curr. file</li>
+            <li>
+              :map &lt;key&gt; &lt;C&gt; define keystroke &lt;K&gt; as a command
+              sequence
+            </li>
+            <li>
+              :ab x y abbreviate x as y; when x is typed it insert y instead; x
+              needs to be full words or phrases (3)
+            </li>
+            <li>una[b] a disable abbreviation or mapping</li>
+            <li>
+              :set [all] display options set so far; if all is included, shows
+              default options as well
+            </li>
+            <li>
+              :set o option activate option o; set o? show value of option o
+            </li>
+            <li>:set no[u] deactivate option u</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
