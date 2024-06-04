@@ -71,6 +71,7 @@
 
       td.arrow {
         font-size: 3rem;
+        /* padding: 0.5rem; */
       }
 
       table.box {
@@ -116,6 +117,26 @@
       }
 
       table.vert tr td code {
+        font-size: 2rem;
+        border: 2px solid #548586;
+        color: #3f7779;
+      }
+
+      table.hor tr:first-child {
+        /* styles for first row only */
+        font-weight: bold;
+      }
+
+      table.hor tr:first-child td {
+        /* styles for first row only */
+        padding-bottom: 1rem;
+      }
+
+      table.hor tr:nth-child(2) td {
+        vertical-align: top;
+      }
+
+      table.hor tr:first-child td code {
         font-size: 2rem;
         border: 2px solid #548586;
         color: #3f7779;
@@ -377,7 +398,10 @@
           <table class="box">
             <tr>
               <td><code>v</code></td>
-              <td>start visual mode, mark lines, then perform a command (like yank)</td>
+              <td>
+                start visual mode, mark lines, then perform a command (like
+                yank)
+              </td>
             </tr>
             <tr>
               <td><code>V</code></td>
@@ -456,17 +480,17 @@
       </div>
       <div class="grid-row grid-row-2">
         <div class="grid-item">
-          <table>
+          <table class="hor">
             <tr>
-              <td rowspan="2"  class="arrow">🡄</td>
-              <td>0</td>
-              <td>^/_</td>
-              <td>&lt;</td>
-              <td>,</td>
-              <td>F</td>
-              <td>T</td>
-              <td>ge/gE</td>
-              <td>b/B</td>
+              <td rowspan="2" class="arrow">🡄</td>
+              <td><code>0</code></td>
+              <td><code>^/_</code></td>
+              <td><code>&lt;</code></td>
+              <td><code>,</code></td>
+              <td><code>F</code></td>
+              <td><code>T</code></td>
+              <td><code>ge/gE</code></td>
+              <td><code>b/B</code></td>
             </tr>
             <tr>
               <td>hard beginning of line</td>
@@ -481,17 +505,17 @@
           </table>
         </div>
         <div class="grid-item">
-          <table>
+          <table class="hor">
             <tr>
-              <td>w/W</td>
-              <td>e/E</td>
-              <td>t</td>
-              <td>f</td>
-              <td>;</td>
-              <td>&gt;</td>
-              <td>%</td>
-              <td>$</td>
-              <td rowspan="2"  class="arrow">🡆</td>
+              <td><code>w/W</code></td>
+              <td><code>e/E</code></td>
+              <td><code>t</code></td>
+              <td><code>f</code></td>
+              <td><code>;</code></td>
+              <td><code>&gt;</code></td>
+              <td><code>%</code></td>
+              <td><code>$</code></td>
+              <td rowspan="2" class="arrow">🡆</td>
             </tr>
             <tr>
               <td>hard beginning of line</td>
@@ -604,7 +628,7 @@
               <td>cursor to middle of screen</td>
             </tr>
             <tr>
-              <td colspan="2"  class="arrow">🡇</td>
+              <td colspan="2" class="arrow">🡇</td>
             </tr>
           </table>
         </div>
