@@ -12,7 +12,7 @@
         margin: 0;
         padding: 0;
         font-family: "Roboto Mono", "Consolas", monospace;
-        font-size: 14px;
+        font-size: 13px;
         color: #222;
       }
 
@@ -29,6 +29,7 @@
         padding-right: 0.5rem;
         border-radius: 4px;
         white-space: nowrap;
+        font-size: 1.15rem;
       }
 
       h1,
@@ -181,9 +182,9 @@
   </head>
   <body>
     <div class="grid-container">
-      <div class="grid-row grid-row-0">
+      <!-- <div class="grid-row grid-row-0">
         <div class="grid-item"><h2>NeoVim cheatsheet</h2></div>
-      </div>
+      </div> -->
       <div class="grid-row grid-row-1">
         <div class="grid-item">
           <h3>EDITING</h3>
@@ -578,24 +579,65 @@
         </div>
         <div class="grid-item">
           <h3>INSERT MODE</h3>
-          <ul>
-            <li>i insert before the cursor</li>
-            <li>I insert at the beginning of the line</li>
-            <li>a append after the cursor</li>
-            <li>A append at the end of the line</li>
-            <li>o open new line below the current one</li>
-            <li>O open new line above the current one</li>
-            <li>gi insert at the same place</li>
-            <li>gi insert text &lt;#&gt; times</li>
-            <li>Esc exit insert mode</li>
-          </ul>
+          <h3>Insert Mode</h3>
+          <table class="box">
+            <tr>
+              <td><code>i</code></td>
+              <td>insert before the cursor</td>
+            </tr>
+            <tr>
+              <td><code>I</code></td>
+              <td>insert at the beginning of the line</td>
+            </tr>
+            <tr>
+              <td><code>a</code></td>
+              <td>append after the cursor</td>
+            </tr>
+            <tr>
+              <td><code>A</code></td>
+              <td>append at the end of the line</td>
+            </tr>
+            <tr>
+              <td><code>o</code></td>
+              <td>open new line below the current one</td>
+            </tr>
+            <tr>
+              <td><code>O</code></td>
+              <td>open new line above the current one</td>
+            </tr>
+            <tr>
+              <td><code>gi</code></td>
+              <td>insert at the same place</td>
+            </tr>
+            <tr>
+              <td><code>gi</code></td>
+              <td>insert text <#> times</td>
+            </tr>
+            <tr>
+              <td><code>Esc</code></td>
+              <td>exit insert mode</td>
+            </tr>
+          </table>
+
           <h3>MACROS</h3>
-          <ul>
-            <li>qa record macro to register 'a'</li>
-            <li>q stop recording macro</li>
-            <li>@a run macro at register 'a'</li>
-            <li>@@ rerun last macro</li>
-          </ul>
+          <table class="box">
+            <tr>
+              <td><code>qa</code></td>
+              <td>record macro to register 'a'</td>
+            </tr>
+            <tr>
+              <td><code>q</code></td>
+              <td>stop recording macro</td>
+            </tr>
+            <tr>
+              <td><code>@a</code></td>
+              <td>run macro at register 'a'</td>
+            </tr>
+            <tr>
+              <td><code>@@</code></td>
+              <td>rerun last macro</td>
+            </tr>
+          </table>
         </div>
         <div class="grid-item">
           <table class="vert center">
@@ -634,74 +676,151 @@
         </div>
         <div class="grid-item">
           <h3>SEARCH</h3>
-          <ul>
-            <li>/pattern search for pattern</li>
-            <li>?pattern search for pattern backwards</li>
-            <li>Search Pattern: Finds...</li>
-            <li>a the character a</li>
-            <li>^a line beginning with char a</li>
-            <li>[abc] string containing any of a,b or c</li>
-            <li>a.*a string beginning with a char a</li>
-            <li>\a, AA, AAA disable char special meaning</li>
-            <li>n next</li>
-            <li>N previous</li>
-            <li></li>
-          </ul>
+          <table class="box">
+            <tr>
+              <td><code>/pattern</code></td>
+              <td>search for pattern</td>
+            </tr>
+            <tr>
+              <td><code>?pattern</code></td>
+              <td>search for pattern backwards</td>
+            </tr>
+            <tr>
+              <td><code>Search Pattern:</code></td>
+              <td>Finds...</td>
+            </tr>
+            <tr>
+              <td><code>a</code></td>
+              <td>the character a</td>
+            </tr>
+            <tr>
+              <td><code>^a</code></td>
+              <td>line beginning with char a</td>
+            </tr>
+            <tr>
+              <td><code>[abc]</code></td>
+              <td>string containing any of a, b, or c</td>
+            </tr>
+            <tr>
+              <td><code>a.*a</code></td>
+              <td>string beginning with char a</td>
+            </tr>
+            <tr>
+              <td><code>\a, AA, AAA</code></td>
+              <td>disable char special meaning</td>
+            </tr>
+            <tr>
+              <td><code>n</code></td>
+              <td>next</td>
+            </tr>
+            <tr>
+              <td><code>N</code></td>
+              <td>previous</td>
+            </tr>
+          </table>
         </div>
         <div class="grid-item">
           <h3>REPLACE</h3>
-          <ul>
-            <li>:s/old/new/ replace next old with new</li>
-            <li>
-              :s/old/new/g replace instances of old with new in current line
-            </li>
-            <li>:%s/old/new/g replace all old with new throughout file</li>
-            <li>
-              :%s/old/new/gc replace all old with new in file with confirmations
-            </li>
-            <li>
-              :%s/old/new/g& replace instances of old with new between lines 1
-              to 5, inclusive
-            </li>
-            <li>
-              :g/string/d delete lines containing/ not containing instances of
-              string x
-            </li>
-          </ul>
+          <table class="box">
+            <tr>
+              <td><code>:s/old/new/</code></td>
+              <td>replace next old with new</td>
+            </tr>
+            <tr>
+              <td><code>:s/old/new/g</code></td>
+              <td>replace instances of old with new in current line</td>
+            </tr>
+            <tr>
+              <td><code>:%s/old/new/g</code></td>
+              <td>replace all old with new throughout file</td>
+            </tr>
+            <tr>
+              <td><code>:%s/old/new/gc</code></td>
+              <td>replace all old with new in file with confirmations</td>
+            </tr>
+            <tr>
+              <td><code>:%s/old/new/g</code></td>
+              <td>
+                replace instances of old with new between lines 1 to 5,
+                inclusive
+              </td>
+            </tr>
+            <tr>
+              <td><code>:g/string/d</code></td>
+              <td>
+                delete lines containing/not containing instances of string x
+              </td>
+            </tr>
+          </table>
+
           <h3>CASE</h3>
-          <ul>
-            <li>~ switch char case, move forward</li>
-            <li>U,u uppercase/lowercase line</li>
-            <li>gU,g~ uppercase/lowercase word</li>
-            <li>VgU,Vg~ invert case for word/line</li>
-          </ul>
+          <table class="box">
+            <tr>
+              <td><code></code></td>
+              <td>switch char case, move forward</td>
+            </tr>
+            <tr>
+              <td><code>U,u</code></td>
+              <td>uppercase/lowercase line</td>
+            </tr>
+            <tr>
+              <td><code>gU,g</code></td>
+              <td>uppercase/lowercase word</td>
+            </tr>
+            <tr>
+              <td><code>VgU,Vg~</code></td>
+              <td>invert case for word/line</td>
+            </tr>
+          </table>
         </div>
         <div class="grid-item">
           <h3>MISCELLANEOUS COMMANDS</h3>
-          <ul>
-            <li>w or ZZ write (save) and quit file</li>
-            <li>w! write file overriding protection</li>
-            <li>q! quit file (discarding any changes)</li>
-            <li>! command use UNIX command</li>
-            <li>r file read file contents into curr. file</li>
-            <li>
-              :map &lt;key&gt; &lt;C&gt; define keystroke &lt;K&gt; as a command
-              sequence
-            </li>
-            <li>
-              :ab x y abbreviate x as y; when x is typed it insert y instead; x
-              needs to be full words or phrases (3)
-            </li>
-            <li>una[b] a disable abbreviation or mapping</li>
-            <li>
-              :set [all] display options set so far; if all is included, shows
-              default options as well
-            </li>
-            <li>
-              :set o option activate option o; set o? show value of option o
-            </li>
-            <li>:set no[u] deactivate option u</li>
-          </ul>
+          <table class="box">
+            <tr>
+              <td><code>w</code> or <code>ZZ</code></td>
+              <td>write (save) and quit file</td>
+            </tr>
+            <tr>
+              <td><code>w!</code></td>
+              <td>write file overriding protection</td>
+            </tr>
+            <tr>
+              <td><code>q!</code></td>
+              <td>quit file (discarding any changes)</td>
+            </tr>
+            <tr>
+              <td><code>!</code></td>
+              <td>use UNIX command</td>
+            </tr>
+            <tr>
+              <td><code>r file</code></td>
+              <td>read file contents into current file</td>
+            </tr>
+            <tr>
+              <td><code>:map <key> <C></code></td>
+              <td>define keystroke <K> as a command sequence</td>
+            </tr>
+            <tr>
+              <td><code>:ab x y</code></td>
+              <td>abbreviate x as y; when x is typed it insert y instead; x needs to be full words or phrases (3)</td>
+            </tr>
+            <tr>
+              <td><code>una[b]</code></td>
+              <td>disable abbreviation or mapping</td>
+            </tr>
+            <tr>
+              <td><code>:set [all]</code></td>
+              <td>display options set so far; if all is included, shows default options as well</td>
+            </tr>
+            <tr>
+              <td><code>:set o</code></td>
+              <td>activate option o; set o? show value of option o</td>
+            </tr>
+            <tr>
+              <td><code>:set no[u]</code></td>
+              <td>deactivate option u</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
