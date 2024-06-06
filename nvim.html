@@ -756,19 +756,19 @@
           <h3>CASE</h3>
           <table class="box">
             <tr>
-              <td><code></code></td>
+              <td><code>~</code></td>
               <td>switch char case, move forward</td>
             </tr>
             <tr>
-              <td><code>U,u</code></td>
+              <td><code>VU/u</code></td>
               <td>uppercase/lowercase line</td>
             </tr>
             <tr>
-              <td><code>gU,g</code></td>
+              <td><code>vEU/u</code></td>
               <td>uppercase/lowercase word</td>
             </tr>
             <tr>
-              <td><code>VgU,Vg~</code></td>
+              <td><code>vE~/g~~</code></td>
               <td>invert case for word/line</td>
             </tr>
           </table>
@@ -777,48 +777,56 @@
           <h3>MISCELLANEOUS COMMANDS</h3>
           <table class="box">
             <tr>
-              <td><code>w</code> or <code>ZZ</code></td>
+              <td><code>:wq</code> <code></code>ZZ</code></td>
               <td>write (save) and quit file</td>
             </tr>
             <tr>
-              <td><code>w!</code></td>
+              <td><code>:w!</code></td>
               <td>write file overriding protection</td>
             </tr>
             <tr>
-              <td><code>q!</code></td>
+              <td><code>:q!</code></td>
               <td>quit file (discarding any changes)</td>
             </tr>
             <tr>
-              <td><code>!</code></td>
-              <td>use UNIX command</td>
+              <td><code>:! command</code></td>
+              <td>give UNIX command</td>
             </tr>
             <tr>
-              <td><code>r file</code></td>
+              <td><code>:r file</code></td>
               <td>read file contents into current file</td>
             </tr>
             <tr>
-              <td><code>:map <key> <C></code></td>
-              <td>define keystroke <K> as a command sequence</td>
+              <td><code>:map x &lt;s&gt;</code></td>
+              <td>define keystroke x as a command sequence</td>
             </tr>
             <tr>
-              <td><code>:ab x y</code></td>
-              <td>abbreviate x as y; when x is typed it insert y instead; x needs to be full words or phrases (3)</td>
-            </tr>
-            <tr>
-              <td><code>una[b]</code></td>
+              <td><code>:unmap x</code></td>
               <td>disable abbreviation or mapping</td>
             </tr>
             <tr>
+              <td><code>:ab a p</code></td>
+              <td>abbreviate p as a; when a is typed in insert mode. it expands to full words or phrases (p)</td>
+            </tr>
+            <tr>
+              <td><code>:unab a</code></td>
+              <td>disable abbreviation for a</td>
+            </tr>
+            <tr>
               <td><code>:set [all]</code></td>
-              <td>display options set so far; if all is included, shows default options as well</td>
+              <td>display options set by user; if all is included, shows default options as well</td>
             </tr>
             <tr>
               <td><code>:set o</code></td>
-              <td>activate option o; set o? show value of option o</td>
+              <td>activate option o</td>
             </tr>
             <tr>
-              <td><code>:set no[u]</code></td>
-              <td>deactivate option u</td>
+              <td><code>:set o=v</code></td>
+              <td>assign value v to option o</td>
+            </tr>
+            <tr>
+              <td><code>:set noU</code></td>
+              <td>deactivate option U</td>
             </tr>
           </table>
         </div>
