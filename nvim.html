@@ -534,30 +534,34 @@
       <div class="grid-row grid-row-3">
         <div class="grid-item">
           <h3>HOW TO THINK IN VIM</h3>
-          <ul>
-            <li>
+          <table>
+            <tr><td colspan="2">
               To be efficient in VIM, learning commands is not enough. To
               accomplish editing tasks elegantly, you must learn to think in
               "VIM VERB NOUN MODIFIER" statements. Because VIM is a symbol
               language with a formal grammatical structure, these VIM idioms
               describe what you want to do in a somewhat natural way and are the
               heart of VIM wizardry.
-            </li>
-            <li>
-              VERBS are the thing you want to do - (change), (delete), (yank),
-              (visual), etc.
-            </li>
-            <li>
-              MODIFIERS change how nouns are understood - (inside), (around),
-              (until), (to), (find), etc.
-            </li>
-            <li>
-              NOUNS are what you are editing - (word), (sentence), (paragraph),
-              (block), etc.
-            </li>
-            <li>Some examples:</li>
-            <li>diw delete inside word to delete word under cursor</li>
-            <li>ciw change inside word, respecting citation</li>
+            
+            </td></tr>
+            <tr><td colspan="2">
+              VERBS are the thing you want to do - (c)hange, (d)elete, (y)ank, (v)isual, etc.
+            </td></tr>
+            <tr><td colspan="2">
+              MODIFIERS change how nouns are understood - (i)nside, (a)round, (u)ntil, (t)o, (f)ind, etc.
+            </td></tr>
+            <tr><td colspan="2">
+              NOUNS are what you are editing - (w)ord, (s)entence, (p)aragraph, (b)lock, etc.
+            </td></tr>
+            <tr><td colspan="2"><h4>Some examples</h4></td></tr>
+            <tr><td><code>diw</code></td><td>delete inside word to delete word under cursor</td></tr>
+            <tr><td><code>ciw</code></td><td>change the inner word, respecting delimitation</td></tr>
+            <tr><td><code>ci"</code></td><td>change inside quotation marks to change string inside next marks</td></tr>
+          </table>
+          <ul>
+            
+           
+            
             <li>
               ci" change inside quotation marks to change string inside next
               marks
@@ -579,7 +583,6 @@
         </div>
         <div class="grid-item">
           <h3>INSERT MODE</h3>
-          <h3>Insert Mode</h3>
           <table class="box">
             <tr>
               <td><code>i</code></td>
